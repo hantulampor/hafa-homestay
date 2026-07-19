@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAFA Homestay Roomstay Seberang Takir</title>
+  <meta name="description" content="Homestay Roomstay di Kampung Seberang Takir, Kuala Terengganu. Strategik, selesa, berdekatan dengan Drawbridge, Mayang Mall, KTCC Mall & Pantai Batu Buruk." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+      color: white;
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      position: relative;
+    }
+    .hero .sub {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+      position: relative;
+    }
+    .hero .tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      border-radius: 20px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      position: relative;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      border: 1px solid #e2e8f0;
+    }
+    .card h2 {
+      font-size: 1.3rem;
+      color: #0f766e;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card h2 .icon { font-size: 1.4rem; }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .info-item {
+      background: #f1f5f9;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+    }
+    .info-item strong {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+      margin-bottom: 0.2rem;
+    }
+    .places {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .place {
+      background: #f1f5f9;
+      padding: 0.7rem;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .place .emoji { font-size: 1.3rem; display: block; margin-bottom: 0.3rem; }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    }
+    .btn-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1e293b;
+      color: white;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: transform 0.2s;
+    }
+    .btn-call:hover { transform: translateY(-2px); }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      display: block;
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8rem; }
+      .info-grid { grid-template-columns: 1fr; }
+      .places { grid-template-columns: 1fr 1fr; }
+      .actions { flex-direction: column; align-items: center; }
+      .btn-whatsapp, .btn-call { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>🏡 HAFA Homestay</h1>
+    <p class="sub">Roomstay Seberang Takir • Kuala Terengganu</p>
+    <span class="tag">✅ Sedia Menerima Tempahan</span>
+  </div>
+
+  <div class="container">
+
+    <!-- Contact Actions -->
+    <div class="actions">
+      <a class="btn-whatsapp" href="https://wa.me/601110752276?text=Assalamualaikum%20saya%20nak%20tempah%20HAFA%20Homestay" target="_blank">
+        &#128242; Tempah via WhatsApp
+      </a>
+      <a class="btn-call" href="tel:+601110752276">
+        &#128222; 011-1075 2276
+      </a>
+    </div>
+
+    <!-- About -->
+    <div class="card">
+      <h2><span class="icon">&#127968;</span> Tentang Kami</h2>
+      <p>HAFA Homestay Roomstay terletak di <strong>Kampung Seberang Takir</strong>, lokasi yang sangat strategik di Kuala Terengganu. Sesuai untuk keluarga, rombongan kecil, atau sesiapa yang nak penginapan selesa dan murah.</p>
+    </div>
+
+    <!-- Info -->
+    <div class="card">
+      <h2><span class="icon">&#128196;</span> Maklumat</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>Alamat</strong>
+          53252, Jalan Penghulu Muda<br>Kg Seberang Takir<br>21300 Kuala Terengganu
+        </div>
+        <div class="info-item">
+          <strong>Hubungi</strong>
+          011-1075 2276<br>019-956 3141<br>Pn. Afiqah
+        </div>
+      </div>
+    </div>
+
+    <!-- Nearby -->
+    <div class="card">
+      <h2><span class="icon">&#128205;</span> Lokasi Strategik</h2>
+      <div class="places">
+        <div class="place"><span class="emoji">&#127760;</span>Drawbridge</div>
+        <div class="place"><span class="emoji">&#127982;</span>Mayang Mall</div>
+        <div class="place"><span class="emoji">&#127982;</span>KTCC Mall</div>
+        <div class="place"><span class="emoji">&#128052;</span>Pasar Payang</div>
+        <div class="place"><span class="emoji">&#128230;</span>Pasar Nita</div>
+        <div class="place"><span class="emoji">&#127754;</span>Pantai Seberang Takir</div>
+        <div class="place"><span class="emoji">&#127754;</span>Pantai Batu Buruk</div>
+      </div>
+    </div>
+
+    <!-- Google Maps -->
+    <div class="card">
+      <h2><span class="icon">&#128506;</span> Peta</h2>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.123456789!2d103.1347546!3d5.3474345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b7bd95dd5a18e1%3A0xa2693e28d650c27c!2sHAFA%20HOMESTAY%20ROOMSTAY%20SEBERANG%20TAKIR!5e0!3m2!1sms!2smy!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Photos placeholder -->
+    <div class="card">
+      <h2><span class="icon">&#128247;</span> Galeri</h2>
+      <p style="color: #94a3b8; text-align:center; padding:1rem 0;">&#128247; Gambar akan dikemas kini tidak lama lagi</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    HAFA Homestay Roomstay Seberang Takir &mdash; Kuala Terengganu
+  </div>
+
+</body>
+</html>

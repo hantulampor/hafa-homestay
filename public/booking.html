@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tempah - HAFA Homestay</title>
+  <meta name="description" content="Tempah HAFA Homestay Roomstay Seberang Takir online. Bayar melalui ToyyibPay." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Inter",sans-serif; background:#f8fafc; color:#1e293b; line-height:1.6; }
+    .header { background:linear-gradient(135deg,#0f766e,#0d9488); color:white; padding:2rem 1.5rem; text-align:center; }
+    .header h1 { font-size:1.8rem; font-weight:800; }
+    .header p { opacity:0.9; margin-top:0.3rem; }
+    .container { max-width:600px; margin:0 auto; padding:2rem 1.5rem; }
+    .card { background:white; border-radius:16px; padding:1.5rem; margin-bottom:1.5rem; box-shadow:0 1px 3px rgba(0,0,0,0.06); border:1px solid #e2e8f0; }
+    .form-group { margin-bottom:1.2rem; }
+    label { display:block; font-size:0.85rem; font-weight:600; color:#475569; margin-bottom:0.4rem; }
+    input, select, textarea {
+      width:100%; padding:0.75rem 1rem; border:2px solid #e2e8f0; border-radius:10px;
+      font-size:0.95rem; font-family:"Inter",sans-serif; transition:border-color 0.2s; outline:none;
+    }
+    input:focus, select:focus, textarea:focus { border-color:#0d9488; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .btn {
+      display:block; width:100%; padding:1rem; border:none; border-radius:12px;
+      font-size:1.1rem; font-weight:700; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s;
+      background:#0f766e; color:white; box-shadow:0 4px 12px rgba(15,118,110,0.3);
+    }
+    .btn:hover { transform:translateY(-2px); }
+    .btn:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+    .error { color:#dc2626; font-size:0.85rem; margin-top:0.3rem; display:none; }
+    .success-box { background:#f0fdf4; border:2px solid #22c55e; border-radius:12px; padding:1.5rem; text-align:center; display:none; }
+    .success-box .big { font-size:3rem; }
+    .back { display:inline-block; color:#0f766e; text-decoration:none; font-weight:600; margin-bottom:1rem; }
+    .price-display { background:#f1f5f9; padding:1rem; border-radius:10px; text-align:center; }
+    .price-display .amount { font-size:2rem; font-weight:800; color:#0f766e; }
+    .price-display .label { font-size:0.8rem; color:#64748b; }
+    @media (max-width:600px) { .row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="index.html" class="back" style="color:rgba(255,255,255,0.8);font-size:0.9rem;display:block;margin-bottom:0.5rem;">&larr; Kembali</a>
+    <h1>&#128197; Tempah HAFA Homestay</h1>
+    <p>Isi butiran dan bayar secara online</p>
+  </div>
+  <div class="container">
+    <div class="price-display">
+      <div class="label">Harga Semasa</div>
+      <div class="amount" id="priceAmount">RM 80</div>
+      <div style="font-size:0.8rem;color:#64748b;">/ malam</div>
+    </div>
+    <form id="bookingForm" class="card">
+      <div class="form-group">
+        <label>Nama Penuh *</label>
+        <input type="text" id="name" required placeholder="cth: Ahmad bin Ali" />
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label>No. Telefon *</label>
+          <input type="tel" id="phone" required placeholder="011-1234 5678" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="ali@email.com" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label>Tarikh Masuk *</label>
+          <input type="date" id="checkIn" required />
+        </div>
+        <div class="form-group">
+          <label>Tarikh Keluar *</label>
+          <input type="date" id="checkOut" required />
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label>Bilangan Tetamu</label>
+          <select id="guests">
+            <option value="1">1 orang</option>
+            <option value="2" selected>2 orang</option>
+            <option value="3">3 orang</option>
+            <option value="4">4 orang</option>
+            <option value="5">5 orang</option>
+            <option value="6">6+ orang</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Bilangan Malam</label>
+          <select id="nights">
+            <option value="1" selected>1 malam</option>
+            <option value="2">2 malam</option>
+            <option value="3">3 malam</option>
+            <option value="4">4 malam</option>
+            <option value="5">5 malam</option>
+            <option value="6">6 malam</option>
+            <option value="7">7 malam</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Catatan (pilihan)</label>
+        <textarea id="notes" rows="2" placeholder="Contoh: nak bilik tingkat bawah"></textarea>
+      </div>
+      <div id="totalDisplay" style="text-align:center;padding:0.5rem 0 1rem;font-size:1.1rem;">
+        Jumlah: <strong style="color:#0f766e;font-size:1.3rem;" id="totalAmount">RM 80</strong>
+      </div>
+      <div id="errorMsg" class="error">Sila isi semua ruangan bertanda *</div>
+      <button type="submit" class="btn" id="submitBtn">&#128179; Teruskan ke Pembayaran</button>
+      <p style="text-align:center;font-size:0.8rem;color:#94a3b8;margin-top:0.8rem;">Pembayaran diproses oleh ToyyibPay &#128274;</p>
+    </form>
+    <div class="card success-box" id="successBox">
+      <div class="big">✅</div>
+      <h3 style="margin:0.5rem 0;">Tempahan Dihantar!</h3>
+      <p style="color:#64748b;margin-bottom:1rem;">Anda akan dialihkan ke ToyyibPay untuk pembayaran.</p>
+      <p style="font-size:0.85rem;color:#94a3b8;" id="refDisplay"></p>
+    </div>
+  </div>
+  <script>
+    const API_URL = ""; // Will update when deployed
+    const PRICE_PER_NIGHT = 80;
+
+    function calcTotal() {
+      const nights = parseInt(document.getElementById("nights").value) || 1;
+      const total = PRICE_PER_NIGHT * nights;
+      document.getElementById("totalAmount").textContent = "RM " + total;
+    }
+
+    document.getElementById("nights").addEventListener("change", calcTotal);
+
+    // Set default dates
+    const today = new Date();
+    document.getElementById("checkIn").valueAsDate = today;
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    document.getElementById("checkOut").valueAsDate = tomorrow;
+
+    document.getElementById("bookingForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const checkIn = document.getElementById("checkIn").value;
+      const checkOut = document.getElementById("checkOut").value;
+      const guests = document.getElementById("guests").value;
+      const nights = parseInt(document.getElementById("nights").value);
+      const notes = document.getElementById("notes").value.trim();
+      const amount = PRICE_PER_NIGHT * nights;
+
+      if (!name || !phone || !checkIn || !checkOut) {
+        document.getElementById("errorMsg").style.display = "block";
+        return;
+      }
+      document.getElementById("errorMsg").style.display = "none";
+      document.getElementById("submitBtn").disabled = true;
+      document.getElementById("submitBtn").textContent = "Memproses...";
+
+      try {
+        const apiBase = API_URL;
+        const res = await fetch(apiBase + "/api/create-bill", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, phone, email, checkIn, checkOut, notes, amount })
+        });
+        const data = await res.json();
+        if (data.success && data.paymentUrl) {
+          document.getElementById("refDisplay").textContent = "Rujukan: " + data.refNo;
+          document.getElementById("bookingForm").style.display = "none";
+          document.getElementById("successBox").style.display = "block";
+          window.location.href = data.paymentUrl;
+        } else {
+          alert("Ralat: " + (data.error || "Gagal cipta bil"));
+          document.getElementById("submitBtn").disabled = false;
+          document.getElementById("submitBtn").textContent = "Teruskan ke Pembayaran";
+        }
+      } catch (err) {
+        alert("Ralat server. Sila cuba lagi atau hubungi 011-1075 2276");
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("submitBtn").textContent = "Teruskan ke Pembayaran";
+      }
+    });
+  </script>
+</body>
+</html>

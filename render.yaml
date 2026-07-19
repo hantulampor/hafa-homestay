@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: hafa-homestay
+    repo: https://github.com/hantulampor/hafa-homestay
+    branch: main
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/status
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TOYYIBPAY_SECRET
+        sync: false
+      - key: TOYYIBPAY_CATEGORY
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
